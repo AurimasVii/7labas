@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string-array name="loan_types">
+        <item>Linijinis</item>
+        <item>Anuitetas</item>
+    </string-array>
+</resources>

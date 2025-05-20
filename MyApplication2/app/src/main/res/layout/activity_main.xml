@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Kreditavimo suma -->
+        <TextView
+            android:id="@+id/label_credit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Įveskite kredito sumą:"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/credit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Kredito suma"
+            android:inputType="numberDecimal"
+            app:layout_constraintTop_toBottomOf="@id/label_credit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <!-- Palūkanos -->
+        <TextView
+            android:id="@+id/label_interest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Metinė palūkanų norma ir tipas:"
+            app:layout_constraintTop_toBottomOf="@id/credit"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/interest"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:hint="%"
+            android:inputType="numberDecimal"
+            app:layout_constraintTop_toBottomOf="@id/label_interest"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/label_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%"
+            app:layout_constraintStart_toEndOf="@id/interest"
+            app:layout_constraintTop_toTopOf="@id/interest"
+            android:layout_marginStart="8dp" />
+
+        <Spinner
+            android:id="@+id/gChoice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/label_percent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/interest"
+            android:layout_marginStart="8dp" />
+
+        <!-- Terminas -->
+        <TextView
+            android:id="@+id/label_term"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Paskolos terminas:"
+            app:layout_constraintTop_toBottomOf="@id/interest"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="24dp" />
+
+        <EditText
+            android:id="@+id/termM"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:hint="Metai"
+            android:inputType="number"
+            app:layout_constraintTop_toBottomOf="@id/label_term"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/termMon"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:hint="Mėn."
+            android:inputType="number"
+            app:layout_constraintTop_toTopOf="@id/termM"
+            app:layout_constraintStart_toEndOf="@id/termM"
+            android:layout_marginStart="8dp" />
+
+        <!-- Atidėjimo informacija -->
+        <TextView
+            android:id="@+id/label_deferral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Atidėjimo informacija:"
+            app:layout_constraintTop_toBottomOf="@id/termM"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="24dp" />
+
+        <EditText
+            android:id="@+id/deferralMonth"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:hint="Nuo mėn."
+            android:inputType="number"
+            app:layout_constraintTop_toBottomOf="@id/label_deferral"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/delay"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:hint="Kiek mėn."
+            android:inputType="number"
+            app:layout_constraintTop_toTopOf="@id/deferralMonth"
+            app:layout_constraintStart_toEndOf="@id/deferralMonth"
+            android:layout_marginStart="8dp" />
+
+        <!-- Skaičiuoti -->
+        <Button
+            android:id="@+id/cal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Skaičiuoti"
+            app:layout_constraintTop_toBottomOf="@id/delay"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="24dp" />
+
+        <!-- Rezultatų lentelė -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tableView"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            app:layout_constraintTop_toBottomOf="@id/cal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <!-- Filtravimas -->
+        <EditText
+            android:id="@+id/prad"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:hint="Nuo"
+            android:inputType="number"
+            app:layout_constraintTop_toBottomOf="@id/tableView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/pabaig"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:hint="Iki"
+            android:inputType="number"
+            app:layout_constraintTop_toTopOf="@id/prad"
+            app:layout_constraintStart_toEndOf="@id/prad"
+            android:layout_marginStart="8dp" />
+
+        <!-- Mygtukai -->
+        <LinearLayout
+            android:id="@+id/buttonGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/prad"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp">
+
+            <Button
+                android:id="@+id/filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Filtruoti" />
+
+            <Button
+                android:id="@+id/showGraph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Grafas"
+                android:layout_marginStart="12dp" />
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Išsaugoti"
+                android:layout_marginStart="12dp" />
+        </LinearLayout>
+
+        <!-- Diagrama -->
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChart"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/buttonGroup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
